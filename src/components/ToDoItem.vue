@@ -8,7 +8,9 @@
 <script>
 export default {
   name: "to-do-item",
-  props: ["todo"],
+  props: {
+    todo: Object
+  },
   methods: {
     deleteItem(todo) {
       this.$emit("delete", todo);

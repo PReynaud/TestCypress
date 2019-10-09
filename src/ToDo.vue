@@ -61,6 +61,7 @@ export default {
       this.list.push({ id: newId, text: this.todo });
       this.todo = "";
     },
+
     onDeleteItem(todo) {
       this.list = this.list.filter(item => item !== todo);
     }
