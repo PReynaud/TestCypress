@@ -2,10 +2,14 @@
   <div class="ToDoItem">
     <p class="ToDoItem-Text">{{ todo.text }}</p>
     <div class="ToDoItem-Delete" @click="deleteItem(todo)">-</div>
+    <!-- <div class="ToDoItem-Delete" @click="deleteItemWithDelay(todo)">-</div> -->
+    <!-- <div class="ToDoItem-Delete" @click="deleteItemAndSendRequest(todo)">-</div> -->
   </div>
 </template>
 
 <script>
+import axios from "axios";
+
 export default {
   name: "to-do-item",
   props: {
@@ -14,6 +18,19 @@ export default {
   methods: {
     deleteItem(todo) {
       this.$emit("delete", todo);
+    },
+
+    deleteItemWithDelay(todo) {
+      setTimeout(() => {
+        this.$emit("delete", todo);
+      }, 3000);
+    },
+
+    deleteItemAndSendRequest(todo) {
+      const url = "https://jsonplaceholder.typicode.com/posts/42";
+      axios.get(url).then(() => {
+        this.$emit("delete", todo);
+      });
     }
   }
 };
